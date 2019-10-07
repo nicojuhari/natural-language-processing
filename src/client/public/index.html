@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>NLP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <header>
@@ -13,17 +15,47 @@
            </div>
         </header>
         <main>
-            <section class="container">more content will be here</section>
+            <section>
+                    <div class="main-content container">
+                        <div class="block block--entry">
+                            <h1 class="block-title">Add your Post URL in the below field</h1>
+                            <div class="block-content">
+                                <input id="url" type="text" name="url" class="input-text">
+                                <button id="callApi" class="btn">Analyse</button>
+                            </div>
+                        </div>
+                        <div class="block block--result hide">
+                            <h2 class="block-title">Result</h2>
+                            <div class="block-content">
+                                <div id="result-message" class="result-message">
+                                    <!-- the content will be added here by JS -->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+            </section>
         </main>
         <footer>
             <div class="footer flex-between-center container">
-                <div class="copyright">NLP &copy; 2019</div>
-                <div class="social-buttons">
-                    social-buttons 2
-
-                    asdfsf 
-                </div>
+                <div class="copyright">Natural Language Processing &copy; 2019</div>
+                <ul class="social-buttons">
+                    <li><a class="s-icon fb" target="_blank" title="Facebook" href="https://www.facebook.com/nicojuhari"></a></li>
+                    <li><a class="s-icon in" target="_blank" title="Linkedin" href="https://www.linkedin.com/in/nicojuhari/"></a></li>
+                    <li><a class="s-icon gh" target="_blank" title="GitHub" href="https://github.com/nicojuhari"></a></li>
+                </ul>
             </div>
         </footer>
+        <div id="loading-gif" class="full-screen hide">
+           <div class="loading-gif"></div>
+        </div>
+        <div id="error-message" class="full-screen hide">
+            <div class="em-wrapper">
+                <div class="em-close">&times;</div>
+                <div class="em-text">
+                    <!-- the error message will be added here dynamically -->
+                </div>
+            </div>
+        </div>
     </body>
 </html>

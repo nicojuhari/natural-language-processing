@@ -1,7 +1,17 @@
-/* =============   Declaration part ============= */
+
+const   { 
+        validateUrl, 
+        closeErrorMessage, 
+        showErrorMessage, 
+        loadingGif, 
+        showOrHideResultBlock 
+        
+        } = require('./helpers');
 
 
-const sendRequestOnLocalServer = async (url = '', data = {}) => {
+
+/* Send POST request to local server with userUrl */
+export const sendRequestOnLocalServer = async (url = '', data = {}) => {
     const res = await fetch(url, {
         method: 'POST',
         headers: {
@@ -17,27 +27,7 @@ const sendRequestOnLocalServer = async (url = '', data = {}) => {
     }
 };
 
-/* Validate the URL */
-const validateUrl = (str) => {
-    const urlRegex = /^(http|https):\/\/+(www.)*([a-z0-9]{2})\S*\.[a-z]{2,10}(\/)*(\S)*?$/gm;
-    const url = new RegExp(urlRegex, 'i');
-    return url.test(str);
-}
-
-/* Show errors message block */
-const showErrorMessage = (msg) => {
-    document.querySelector('.em-text').innerHTML = msg;
-    document.getElementById('error-message').classList.remove('hide');
-}
-
-const loadingGif = (hide = '') => {
-    hide === 'hide' ? document.getElementById('loading-gif').classList.add('hide') : document.getElementById('loading-gif').classList.remove('hide');
-};
-
-const showOrHideResultBlock = (hide = '') => {
-    hide === 'hide' ? document.querySelector('.block--result').classList.add('hide') : document.querySelector('.block--result').classList.remove('hide');
-}
-
+/* Add the API result on the page or show the errors */
 const displayContentByText = (data) => {
     
     //check the response for errors
@@ -46,27 +36,34 @@ const displayContentByText = (data) => {
     }
     else {
         //get the result insert block
-        const resultBlock = document.getElementById('result-message');
+        const resultBlock = document.getElementById('result-blocks');
         
         //create the result 
-        let content = ` <div class="result-message__sentiment">
-                            <div class="rm-polarity">
-                                <div class="rm-label">Polarity<span class="rm-value">${data.polarity}</span></div>
-                                <div class="rm-label">Confidence<span class="rm-value">${data.polarity_confidence}</span></div>
+        let content = ` <div class="block">
+                            <h3 class="block-title">Data</h3>
+                            <div class="data-row">
+                                <div class="data-icon">P</div>
+                                <div class="data-data">
+                                    <div class="data-label">Polarity: <span class="data-value">${data.polarity}</span></div>
+                                    <div class="data-label">Confidence: <span class="data-value">${data.polarity_confidence}</span></div>
+                                </div>
                             </div>
-                            <div class="rm-subject">
-                                <div class="rm-label">Subjectivity<span class="rm-value">${data.subjectivity}</span></div>
-                                <div class="rm-label">Confidence<span class="rm-value">${data.subjectivity_confidence}</span></div>
+                            <div class="data-row">
+                                <div class="data-icon">S</div>
+                                <div class="data-data">
+                                    <div class="data-label">Subjectivity: <span class="data-value">${data.subjectivity}</span></div>
+                                    <div class="data-label">Confidence: <span class="data-value">${data.subjectivity_confidence}</span></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="result-message__content">
-                            <h3 class="block-title">Article content</h3>
-                            ${data.image ? `<div class="rm-image">
+                        <div class="block">
+                            <h3 class="block-title">Content</h3>
+                            ${data.image ? `<div class="data-image">
                                                 <img src="${data.image}" alt="${data.title}"/>
                                             </div>` : ``}
-                            <h3 class="rm-title">${data.title}</h3>
-                            <div class="rm-text">${data.text}</div>
-                            <div class="rm-cta"><a href="${data.url}" target="blank">Go to the article!</a></div>
+                            <h5 class="data-title">${data.title}</h5>
+                            <div class="data-text">${data.text}</div>
+                            <div class="data-cta"><a href="${data.url}" target="blank">Go to the article!</a></div>
                         </div>`;
 
         //add the result to the page
@@ -82,6 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //get DOM
     const callApiBtn = document.getElementById('callApi');
+    const closeErrMessageBtn = document.querySelector('.em-close');
+
+    window.addEventListener('offline', function(e) { console.log('offline'); });
+
+window.addEventListener('online', function(e) { console.log('online'); });
 
     //Event Listener: Click => on button
     callApiBtn.addEventListener('click', () => {
@@ -89,6 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
         //get the url from the user
         const userUrl = document.getElementById('url').value;
 
+        //check if there is a internet connection
+        if(navigator.onLine === false) {
+            showErrorMessage('Please connect to Internet and try again!');
+            return;
+        } else {
+            console.log('Internet is connected');
+        }
 
         //check if the URL is not empty or too short
         if(userUrl == '' || userUrl.length < 12){
@@ -123,4 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
     });
 
-})
+
+    // Event Listener: Click => on closeErrMessageBtn and close the Error Message Block
+    closeErrMessageBtn.addEventListener('click', closeErrorMessage);
+
+});

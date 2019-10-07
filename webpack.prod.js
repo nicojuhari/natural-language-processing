@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: './src/client/index.js',
@@ -31,7 +32,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebPackPlugin({
-            template: "./src/client/public/index.html",
+            template: "./src/client/html/index.html",
             filename: "./index.html",
         }),
         new MiniCssExtractPlugin({
@@ -40,6 +41,7 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
-        })
+        }),
+        new WorkboxPlugin.GenerateSW()
     ]
 }

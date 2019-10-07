@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>NLP</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+                // Check that service workers are supported
+                if ('serviceWorker' in navigator) {
+                    // Use the window load event to keep the page load performant
+                    window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('./service-worker.js');
+                    });
+                }
+        </script>
     </head>
     <body>
         <header>
            <div class="header container">
-               <div class="logo">Logo</div>
-               <nav>
-                   <ul><a href="#">Home</a></ul>
-               </nav>
+               <a href="/" class="logo"></a>
            </div>
         </header>
         <main>
             <section>
                     <div class="main-content container">
-                        <div class="block block--entry">
-                            <h1 class="block-title">Add your Post URL in the below field</h1>
-                            <div class="block-content">
+                        <div class="form-block">
+                            <h1 class="form-title">Add your Post URL in the below field</h1>
+                            <div class="form-note">*The URL should start with https:// or http://</div>
+                            <div class="form-main">
                                 <input id="url" type="text" name="url" class="input-text">
-                                <button id="callApi" class="btn">Analyse</button>
+                                <button id="callApi" class="btn" title="Analyse the web page"></button>
                             </div>
                         </div>
-                        <div class="block block--result hide">
-                            <h2 class="block-title">Result</h2>
-                            <div class="block-content">
-                                <div id="result-message" class="result-message">
-                                    <!-- the content will be added here by JS -->
-                                </div>
-                            </div>
-                            
+                        <div id="result-blocks" class="result-blocks hide">
+                            <!-- the content will be added here by JS -->
                         </div>
                     </div>
             </section>

@@ -19,6 +19,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                loader: 'file-loader',
+                options: {
+                  name: 'public/[name].[ext]',
+                },
             }
         ]
     },
@@ -27,6 +34,6 @@ module.exports = {
             template: "./src/client/public/index.html",
             filename: "./index.html",
         }),
-        new CleanWebpackPlugin()
+        //new CleanWebpackPlugin()
     ]
 }

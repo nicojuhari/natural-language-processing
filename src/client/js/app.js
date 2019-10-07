@@ -91,14 +91,6 @@ window.addEventListener('online', function(e) { console.log('online'); });
         //get the url from the user
         const userUrl = document.getElementById('url').value;
 
-        //check if there is a internet connection
-        if(navigator.onLine === false) {
-            showErrorMessage('Please connect to Internet and try again!');
-            return;
-        } else {
-            console.log('Internet is connected');
-        }
-
         //check if the URL is not empty or too short
         if(userUrl == '' || userUrl.length < 12){
 

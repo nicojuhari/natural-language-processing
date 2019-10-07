@@ -18,12 +18,12 @@ export const showErrorMessage = (msg) => {
     document.getElementById('error-message').classList.remove('hide');
 }
 
-/* Show & hide loading gif */
-export const loadingGif = (hide = '') => {
-    hide === 'hide' ? document.getElementById('loading-gif').classList.add('hide') : document.getElementById('loading-gif').classList.remove('hide');
-};
-
-/* Show & hide REsult Block */
-export const showOrHideResultBlock = (hide = '') => {
-    hide === 'hide' ? document.getElementById('result-blocks').classList.add('hide') : document.getElementById('result-blocks').classList.remove('hide');
+export const toggleHideClassToElement = (elementID, hide = '') => {
+    hide === 'hide' ? document.getElementById(elementID).classList.add('hide') : document.getElementById(elementID).classList.remove('hide');
 }
+/* Show & hide loading gif */
+export const loadingGif = (hide = '') => toggleHideClassToElement('loading-gif', hide);
+
+
+/* Show & hide Result Blocks */
+export const showOrHideResultBlock = (hide = '') => toggleHideClassToElement('result-blocks', hide);

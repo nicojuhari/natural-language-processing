@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const serverless = require('serverless-http')
 const dotenv = require('dotenv'); 
       dotenv.config();
 var AYLIENTextAPI = require('aylien_textapi');
@@ -23,16 +22,14 @@ app.listen(port, () => {
     console.log('The server is running on http://localhost:'+port);
 })
 
-//create a router
-const router = express.Router();
 
-router.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile('dist/index.html') 
 });
 
 
 //send the API request to Aylien API server
-router.post('/apicall', (req, res) => {
+app.post('/apicall', (req, res) => {
      
     //create an empty resultData object, which will be send back to the user/browser
     const resultData = {};
@@ -95,8 +92,3 @@ router.post('/apicall', (req, res) => {
 
     });
 }); // and APIcall
-
-app.use('./netlify/functions/index', router);
-
-// for netlify
-module.exports.handler = serverless(app);

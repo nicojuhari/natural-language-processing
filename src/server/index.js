@@ -96,7 +96,7 @@ router.post('/apicall', (req, res) => {
     });
 }); // and APIcall
 
-app.use(router);
+app.use('./netlify/functions/index', router);
 
 // for netlify
 module.exports.handler = serverless(app);

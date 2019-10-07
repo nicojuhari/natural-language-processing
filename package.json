@@ -7,7 +7,7 @@
     "test": "jest --no-cache --verbose",
     "start": "node src/server/index.js",
     "build-dev": "webpack-dev-server --config webpack.dev.js --open",
-    "build-prod": "webpack --config webpack.prod.js",
+    "build-prod": "webpack --config webpack.prod.js && netlify-lambda build src/server",
     "build-lamb": "netlify-lambda build src/server"
   },
   "author": "",

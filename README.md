@@ -9,15 +9,15 @@ HTML, CSS, SASS, JavaScript, Node.js, Express.js, Webpack, Jest, API
 2. Two webpack config files(dev and production)
 3. Separated style folder for SASS files
 4. Semantic HTML, src/client and src/server folders
-5. Fetch data from [TEXT ANALYSIS API](https://aylien.com/text-api/) from local server(Node.js)
+5. Fetch data from [TEXT ANALYSIS API](https://aylien.com/text-api/) from the local server(Node.js)
 6. Handle and display the errors
 7. Update the UI with the result
 
 
 ## Project live link
 
-[Visit NLP App](https://nlp-app.netlify.com/)
-P.S. the app is not working because the server is not configured for Netlify, if fully  working on your local
+[Visit NLP App](https://nlp-app.netlify.com/)<br>
+* the app is not working because the server is not configured for Netlify, is fully  working on your local
 
 ## What the app is doing?
 The app will extract meaning and insight from textual content with ease.

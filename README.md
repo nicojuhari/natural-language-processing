@@ -1,29 +1,55 @@
-# Natural Language Processing
-Evaluate a News Article with Natural Language Processing app - Udacity - Project 4
+# Natural Language Processing App
+Udacity - Project 4<br>
+HTML, CSS, SASS, JavaScript, Node.js, Express.js, Webpack, Jest, API
 
 
-## What is doing this app?
+## Project requirements
+
+1. Organised files and directories
+2. Two webpack config files(dev and production)
+3. Separated style folder for SASS files
+4. Semantic HTML, src/client and src/server folders
+5. Fetch data from [TEXT ANALYSIS API](https://aylien.com/text-api/) from local server(Node.js)
+6. Handle and display the errors
+7. Update the UI with the result
+
+
+## Project live link
+
+[Visit NLP App](https://nlp-app.netlify.com/)
+P.S. the app is not working because the server is not configured for Netlify, if fully  working on your local
+
+## What the app is doing?
 The app will extract meaning and insight from textual content with ease.
-Add a post or page URL in the input and the app will give insights. 
+Add a post or page URL in the input and the app will give the insights. 
 
 
 ## How to install the app on your local
-1. Download the files or Clone the Repo on your local machine
-2. In the root folder run: ``` npm run build-prod ``` and ``` npm run start ```
-3. Open the browser http://localhost:8081
-4. Add the Post/Page URL in the input. The URL should start with the protocol.
+1. Download the files or clone the repo on your local machine
+2. Add/Replace the API KEYS, see more below
+3. In the root folder run: ``` npm run build-prod ``` and ``` npm run start ```
+4. Open the browser http://localhost:8081
+5. Add the Post/Page URL in the input.
 
 
-## Important!!!
-To be able to use the app, you should repalce in the src/server/index.js file the ```process.env.API_ID ``` and ```process.env.API_KEY``` with your  API Key and API ID from [Aylien API](https://aylien.com/text-api/) or create a local env file with ```npm dotenv``` to s
+#### Important!!!
+To be able to use the app, you should repalce in the src/server/index.js file the ```process.env.API_ID ``` and ```process.env.API_KEY``` with your  API Key and API ID from [Aylien API](https://aylien.com/text-api/) or create a local env file with ```npm dotenv```
 
 
-## Development environment
+#### Development environment
+
 If you want to run the app in development mode, in the root run: ```npm run build-dev```.
-The browser automatically will be open in http://localhost:8080
- 
+The browser automatically will be opened on http://localhost:8080
 
-## This app has been created using:
-- JavaScript for functions;
-- SASS for styling
-- Automatisation by [Webpack](https://webpack.js.org/) and Webpack Dev Server
+
+## Project review
+
+> Well done! :star: <br>
+You have done a great job on this project :fire: <br>
+I really appreciate the efforts you have put into this project :clap: :clap:<br>
+Congratulations on completing the project :+1: <br>
+Keep Learning :smile:, Stay Udacious
+
+Full project review: [click here](https://drive.google.com/file/d/1bNMbXhebpy3p71Tpdd9Y383fRnM4avTw/view?usp=sharing)
+
+#### Thanks, Nick ;)

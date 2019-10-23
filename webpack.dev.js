@@ -34,6 +34,6 @@ module.exports = {
             template: "./src/client/html/index.html",
             filename: "./index.html",
         }),
-        //new CleanWebpackPlugin()
+        new CleanWebpackPlugin()
     ]
 }

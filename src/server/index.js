@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 var AYLIENTextAPI = require('aylien_textapi');
       
 //declare variables
-const port = 8081;
+const port = process.env.PORT || 8081;
 const app = express();
 var nlp = new AYLIENTextAPI({
     application_id: process.env.API_ID,

@@ -19,7 +19,7 @@ app.use(express.static('dist'));
 
 //start the server
 app.listen(port, () => {
-    console.log('The server is running on http://localhost:'+port);
+    console.log('The server is running on http://localhost:' + port);
 })
 
 

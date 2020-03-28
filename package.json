@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --no-cache --verbose",
-    "start": "node src/server/index.js",
+    "start": "webpack --config webpack.prod.js && node src/server/index.js",
     "build-dev": "webpack-dev-server --config webpack.dev.js --open",
     "build-prod": "webpack --config webpack.prod.js"
   },
